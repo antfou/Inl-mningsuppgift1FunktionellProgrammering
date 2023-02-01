@@ -8,7 +8,8 @@ public class Console {
     public Console(){
          repository = new Repository();
          clientMethods = new ClientMethods();
-         clientMethods.displayInventoryToCustomer(repository.getListOfAllShoesAndAmountInStock());
+         //clientMethods.displayInventoryToCustomer(repository.getListOfAllShoesAndAmountInStock());
+        //System.out.println(clientMethods.janisHeltFelKod(repository.getListOfAllShoesAndAmountInStock()));
     }
 
 
