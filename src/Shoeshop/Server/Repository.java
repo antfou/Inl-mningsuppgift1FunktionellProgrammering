@@ -98,7 +98,7 @@ public class Repository {
 
 
 
-    public void  CallAddToCart(int customerId, int customerOrderId, int shoeId){
+    public void callAddToCart(int customerId, int customerOrderId, int shoeId){
         final String query = "call addToCart(?,?,?)";
         try(Connection c = DriverManager.getConnection(
                 properties.getProperty("url"),

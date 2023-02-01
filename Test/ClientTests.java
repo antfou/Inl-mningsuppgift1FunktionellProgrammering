@@ -10,4 +10,11 @@ public class ClientTests {
         ClientMethods c = new ClientMethods();
         assert(c.userLogin("Leroy","Pokemon97").equals("Välkommen: Leroy Collazo"));
     }
+
+    @Test
+    void getStringWithAllBrandNamesTest(){
+        Repository r = new Repository();
+        ClientMethods c = new ClientMethods();
+        assert(c.getStringWithAllBrandNames(r.getListOfAllShoesAndAmountInStock()).equals("Ecco, Adidas, Nike, Timberlands, Puma"));
+    }
 }

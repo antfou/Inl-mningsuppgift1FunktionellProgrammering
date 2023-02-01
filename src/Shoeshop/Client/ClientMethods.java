@@ -17,11 +17,14 @@ public class ClientMethods {
 
     public String userLogin(String userFirstName, String userPassword){
         Customer tempCustomer = repository.getCustomerFromDatabaseUsingFirstName(userFirstName);
-
-        if(userPassword.equals(tempCustomer.getPassword())){
-            return "Välkommen: "+tempCustomer.getFirstName()+" "+tempCustomer.getLastName();
+        if (tempCustomer!=null) {
+            if (userPassword.equals(tempCustomer.getPassword())) {
+                return "Välkommen: " + tempCustomer.getFirstName() + " " + tempCustomer.getLastName();
+            }else{
+                return "Fel lösenord";
+            }
         }
-        return "Fel användarnamn eller lösenord";
+        return "Fel användarnamn och/eller lösenord";
     }
 
 
@@ -29,7 +32,7 @@ public class ClientMethods {
         shoesList.stream(). filter(shoe -> shoe.getAmountInStock()>0). forEach(shoe -> System.out.println("Sko nr:"+shoe.getId()+" Märke "+shoe.getBrand().getBrandName() +" -Färg: "+shoe.getColor().getColorName()+" -Storlek: "+shoe.getSize()+" -Antal:"+shoe.getAmountInStock()));
     }
 
-    public String janisHeltFelKod(List<Shoe> shoesList){
+    public String getStringWithAllBrandNames(List<Shoe> shoesList){
         return shoesList.stream().map(Shoe::getBrand).map(Brand::getBrandName).distinct()
                 .collect(Collectors.joining(", ", "" , ""));
     }
