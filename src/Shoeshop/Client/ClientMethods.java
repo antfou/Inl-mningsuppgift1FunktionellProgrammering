@@ -15,16 +15,24 @@ public class ClientMethods {
     }
 
 
-    public String userLogin(String userFirstName, String userPassword){
+    public Customer userLogin(String userFirstName, String userPassword){
         Customer tempCustomer = repository.getCustomerFromDatabaseUsingFirstName(userFirstName);
         if (tempCustomer!=null) {
             if (userPassword.equals(tempCustomer.getPassword())) {
-                return "Välkommen: " + tempCustomer.getFirstName() + " " + tempCustomer.getLastName();
-            }else{
-                return "Fel lösenord";
+                return tempCustomer;
             }
         }
-        return "Fel användarnamn och/eller lösenord";
+        return null;
+    }
+
+    public Shoe fetchShoeIfInStock(List<Shoe> shoeList, int id){
+        if(id<=0){
+            return null;
+        } else if (id>shoeList.size()) {
+            return null;
+        }else{
+            return shoeList.get(id-1);
+        }
     }
 
 

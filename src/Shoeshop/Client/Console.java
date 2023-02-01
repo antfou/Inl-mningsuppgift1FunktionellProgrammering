@@ -3,6 +3,7 @@ package Shoeshop.Client;
 import Shoeshop.Logic.ActiveUser;
 import Shoeshop.Logic.ChosenProduct;
 import Shoeshop.Objects.Customer;
+import Shoeshop.Objects.Shoe;
 import Shoeshop.Server.Repository;
 
 import java.util.Scanner;
@@ -23,13 +24,11 @@ public class Console {
 
         while(activeUser == ActiveUser.LOGGED_OUT) {
             user = login();
-            //Thread.sleep(1000);
         }
+        Shoe shoe = chooseProduct();
 
-        while(chosenProduct == ChosenProduct.NOT_IN_STOCK) {
-            clientMethods.displayInventoryToCustomer(repository.getListOfAllShoesAndAmountInStock());
-            System.out.println(chooseProduct());
-        }
+        repository.callAddToCart(user.getId(), 999,shoe.getId());
+        System.out.println("Added to cart: Sko nr:"+shoe.getId()+" Märke "+shoe.getBrand().getBrandName() +" -Färg: "+shoe.getColor().getColorName()+" -Storlek: "+shoe.getSize());
     }
 
 
@@ -44,33 +43,32 @@ public class Console {
         System.out.println("Lösenord: ");
         String password = sc.nextLine();
 
-        System.out.println(clientMethods.userLogin(userName,password));
-
-        if(clientMethods.userLogin(userName,password).startsWith("Välkommen:")){
+        if(clientMethods.userLogin(userName,password) != null){
             activeUser = ActiveUser.LOGGED_IN;
-            return repository.getCustomerFromDatabaseUsingFirstName(userName);
+            System.out.println("Välkommen " + userName);
+            return (clientMethods.userLogin(userName,password));
         }
+        System.out.println("Felaktigt användarnamn eller lösenord");
         return null;
     }
 
 
 
-    public int chooseProduct(){
+    public Shoe chooseProduct(){
         sc = new Scanner(System.in);
-        System.out.println("Skriv in skonummret av skon du vill lägga till i din Cart: ");
 
-        int shoe = sc.nextInt();
+        clientMethods.displayInventoryToCustomer(repository.getListOfAllShoesAndAmountInStock());
 
-        if(shoe>repository.getListOfAllShoesAndAmountInStock().size()){
-            System.out.println("vi har inte sko nr: "+shoe);
-            return 0;
+        while(chosenProduct==ChosenProduct.NOT_IN_STOCK) {
+            System.out.println("Skriv in skonummret av skon du vill lägga till i din Cart: ");
+            int tempInt = sc.nextInt();
+            if(clientMethods.fetchShoeIfInStock(repository.getListOfAllShoesAndAmountInStock(),tempInt)!=null){
+                chosenProduct=ChosenProduct.IN_STOCK;
+                return clientMethods.fetchShoeIfInStock(repository.getListOfAllShoesAndAmountInStock(),tempInt);
+            }
+            System.out.println("Den skon har vi tyvär inte.");
         }
-        if(shoe<0){
-            System.out.println("Vi har inga skor under: ");
-            return 0;
-        }
-        chosenProduct = ChosenProduct.IN_STOCK;
-        return sc.nextInt();
+        return null;
     }
 
 
