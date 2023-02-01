@@ -8,7 +8,7 @@ public class Console {
     public Console(){
          repository = new Repository();
          clientMethods = new ClientMethods();
-         System.out.println(clientMethods.getStringOfInventory(repository.getListOfAllShoesAndAmountInStock()));
+         clientMethods.displayInventoryToCustomer(repository.getListOfAllShoesAndAmountInStock());
     }
 
 

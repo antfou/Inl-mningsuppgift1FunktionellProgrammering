@@ -23,8 +23,7 @@ public class ClientMethods {
     }
 
 
-    public String getStringOfInventory(List<Shoe> shoesList){
-        //return shoesList.stream().filter(shoe -> shoe.getAmountInStock() > 0).forEach(shoe -> "hej" + shoe.getId());
-        return null;
+    public void displayInventoryToCustomer(List<Shoe> shoesList){
+        shoesList.stream(). filter(shoe -> shoe.getAmountInStock()>0). forEach(shoe -> System.out.println("Sko nr:"+shoe.getId()+" Märke "+shoe.getBrand().getBrandName() +" -Färg: "+shoe.getColor().getColorName()+" -Storlek: "+shoe.getSize()+" -Antal:"+shoe.getAmountInStock()));
     }
 }

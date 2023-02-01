@@ -10,11 +10,4 @@ public class ClientTests {
         ClientMethods c = new ClientMethods();
         assert(c.userLogin("Leroy","Pokemon97").equals("Välkommen: Leroy Collazo"));
     }
-
-    @Test
-    void getStringOfInventoryTest(){
-        ClientMethods c = new ClientMethods();
-        Repository r = new Repository();
-        assert(c.getStringOfInventory(r.getListOfAllShoesAndAmountInStock()).equals(""));
-    }
 }
