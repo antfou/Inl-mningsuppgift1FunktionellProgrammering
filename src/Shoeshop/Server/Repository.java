@@ -71,6 +71,30 @@ public class Repository {
         return null;
     }
 
+    public List<Customer> getCustomerListFromDatabase(){
+        final String query = "select * from customer";
+        List<Customer> tempList = new ArrayList<>();
+        try(Connection c = DriverManager.getConnection(
+                properties.getProperty("url"),
+                properties.getProperty("user"),
+                properties.getProperty("password"));
+            PreparedStatement stmt = c.prepareStatement(query);
+        ){
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                Address tempaddress = new Address(rs.getString("address"),rs.getString("city"));
+                Customer tempCustomer = new Customer(rs.getInt("id"), rs.getString("firstName"),rs.getString("lastname"), rs.getString("password"),tempaddress);
+                tempList.add(tempCustomer);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        return tempList;
+    }
+
+
+
 
 
     public List<Shoe> getListOfAllShoesAndAmountInStock(){

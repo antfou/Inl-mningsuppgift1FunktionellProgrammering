@@ -17,4 +17,11 @@ public class ClientTests {
         ClientMethods c = new ClientMethods();
         assert(c.getStringWithAllBrandNames(r.getListOfAllShoesAndAmountInStock()).equals("Ecco, Adidas, Nike, Timberlands, Puma"));
     }
+
+    @Test
+    void getCustomerUsingFirstNameTest(){
+        Repository r = new Repository();
+        ClientMethods c = new ClientMethods();
+        assert(c. getCustomerUsingFirstName(r.getCustomerListFromDatabase(),"Tobbe").getId()==1);
+    }
 }

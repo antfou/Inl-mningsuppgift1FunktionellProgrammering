@@ -38,4 +38,11 @@ public class RepositoryTests {
         Repository r = new Repository();
         assert(r.getOrderListFromDatabaseUsingCustomerId(1).get(0).getOrderedShoes().get(0).getId() == 3);
     }
+
+
+    @Test
+    void getCustomerListFromDatabaseTest(){
+        Repository r = new Repository();
+        assert(r.getCustomerListFromDatabase().get(0).getFirstName().equals("Tobbe"));
+    }
 }

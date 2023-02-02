@@ -44,4 +44,8 @@ public class ClientMethods {
         return shoesList.stream().map(Shoe::getBrand).map(Brand::getBrandName).distinct()
                 .collect(Collectors.joining(", ", "" , ""));
     }
+
+    public Customer getCustomerUsingFirstName(List<Customer> customers, String name){
+        return customers.stream().filter(c->c.getFirstName().equals(name)).toList().get(0);
+    }
 }
