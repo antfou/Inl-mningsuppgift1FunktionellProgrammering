@@ -37,4 +37,8 @@ public class Customer {
     public Address getAddress() {
         return address;
     }
+
+    public String getFullName(){
+        return firstName+" "+lastName;
+    }
 }

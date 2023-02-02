@@ -211,4 +211,27 @@ public class Repository {
         }
         return tempOrderList;
     }
+
+
+
+    public List<Order> getOrderListFromDatabase(){
+        final String query = "select * from customer_order inner join product_customer_order on customer_order.id = product_customer_order.customer_ordersID";
+        List<Order> tempOrderList = new ArrayList<>();
+        try(Connection c = DriverManager.getConnection(
+                properties.getProperty("url"),
+                properties.getProperty("user"),
+                properties.getProperty("password"));
+            PreparedStatement stmt = c.prepareStatement(query);
+        ){
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                tempOrderList.add(new Order(rs.getInt("id"),rs.getDate("order_date"),
+                        getCustomerFromDatabaseUsingId(rs.getInt("customerID")),addShoesToListUsingOrderId(rs.getInt("id"))));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        return tempOrderList;
+    }
 }

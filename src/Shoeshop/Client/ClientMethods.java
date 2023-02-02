@@ -37,7 +37,7 @@ public class ClientMethods {
 
 
     public void displayInventoryToCustomer(List<Shoe> shoesList){
-        shoesList.stream(). filter(shoe -> shoe.getAmountInStock()>0). forEach(shoe -> System.out.println("Sko nr:"+shoe.getId()+" Märke "+shoe.getBrand().getBrandName() +" -Färg: "+shoe.getColor().getColorName()+" -Storlek: "+shoe.getSize()+" -Antal:"+shoe.getAmountInStock()));
+        shoesList.stream().filter(shoe -> shoe.getAmountInStock()>0).forEach(shoe -> System.out.println("Sko nr:"+shoe.getId()+" Märke "+shoe.getBrand().getBrandName() +" -Färg: "+shoe.getColor().getColorName()+" -Storlek: "+shoe.getSize()+" -Antal:"+shoe.getAmountInStock()));
     }
 
     public String getStringWithAllBrandNames(List<Shoe> shoesList){
@@ -47,5 +47,9 @@ public class ClientMethods {
 
     public Customer getCustomerUsingFirstName(List<Customer> customers, String name){
         return customers.stream().filter(c->c.getFirstName().equals(name)).toList().get(0);
+    }
+
+    public boolean checkIfInStock(List<Shoe> shoeList, int id){
+        return shoeList.stream().filter(shoe -> shoe.getAmountInStock()>0).toList().stream().anyMatch(s->s.getId()==id);
     }
 }

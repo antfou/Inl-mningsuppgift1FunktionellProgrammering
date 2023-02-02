@@ -45,4 +45,10 @@ public class RepositoryTests {
         Repository r = new Repository();
         assert(r.getCustomerListFromDatabase().get(0).getFirstName().equals("Tobbe"));
     }
+
+    @Test
+    void getOrderListFromDatabaseTest(){
+        Repository r = new Repository();
+        assert(r.getOrderListFromDatabase().get(0).getOrderedShoes().get(0).getId() == 3);
+    }
 }
