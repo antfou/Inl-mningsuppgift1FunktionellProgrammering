@@ -38,7 +38,12 @@ public class Customer {
         return address;
     }
 
-    public String getFullName(){
-        return firstName+" "+lastName;
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", address=" + address.addressName +
+                '}';
     }
 }

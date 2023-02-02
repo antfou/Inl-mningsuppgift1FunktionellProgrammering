@@ -24,6 +24,10 @@ public class Console {
         rapportMethods = new RapportMethods();
 
 
+        rapportMethods.rapport1();
+
+
+/*
         activeUser = ActiveUser.LOGGED_OUT;
         chosenProduct = ChosenProduct.NOT_IN_STOCK;
 
@@ -34,6 +38,7 @@ public class Console {
 
         repository.callAddToCart(user.getId(), 999,shoe.getId());
         System.out.println("Added to cart: Sko nr:"+shoe.getId()+" Märke "+shoe.getBrand().getBrandName() +" -Färg: "+shoe.getColor().getColorName()+" -Storlek: "+shoe.getSize());
+*/
 
 
     }
