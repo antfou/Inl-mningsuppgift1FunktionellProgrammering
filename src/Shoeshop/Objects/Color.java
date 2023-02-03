@@ -1,7 +1,7 @@
 package Shoeshop.Objects;
 
 public class Color {
-    protected String colorName;
+    protected final String colorName;
 
     public Color(String colorName){
         this.colorName = colorName;

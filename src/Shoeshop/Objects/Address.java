@@ -1,8 +1,8 @@
 package Shoeshop.Objects;
 
 public class Address {
-    protected String addressName;
-    protected String cityName;
+    protected final String addressName;
+    protected final String cityName;
 
     public Address(String addressName, String cityName) {
         this.addressName = addressName;

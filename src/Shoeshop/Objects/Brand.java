@@ -1,7 +1,7 @@
 package Shoeshop.Objects;
 
 public class Brand {
-    protected String brandName;
+    protected final String brandName;
 
     public Brand(String brandName){
         this.brandName = brandName;

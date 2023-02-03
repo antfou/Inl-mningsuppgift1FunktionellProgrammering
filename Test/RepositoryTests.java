@@ -1,4 +1,4 @@
-import Shoeshop.Server.Repository;
+import Shoeshop.Database.Repository;
 import org.junit.jupiter.api.Test;
 
 public class RepositoryTests {

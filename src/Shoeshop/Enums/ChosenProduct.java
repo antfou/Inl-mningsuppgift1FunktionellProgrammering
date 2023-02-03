@@ -1,4 +1,4 @@
-package Shoeshop.Logic;
+package Shoeshop.Enums;
 
 public enum ChosenProduct {
     IN_STOCK,

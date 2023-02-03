@@ -1,24 +1,24 @@
-package Shoeshop.Client;
+package Shoeshop.Console;
 
 import Shoeshop.Objects.Brand;
 import Shoeshop.Objects.Customer;
 import Shoeshop.Objects.Order;
 import Shoeshop.Objects.Shoe;
-import Shoeshop.Server.Repository;
+import Shoeshop.Database.Repository;
 
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class ClientMethods {
-    Repository repository;
-    public ClientMethods(){
+public class Methods {
+    protected final Repository repository;
+    public Methods(){
         repository = new Repository();
     }
 
 
     public Customer userLogin(String userFirstName, String userPassword){
-        Customer tempCustomer = repository.getCustomerFromDatabaseUsingFirstName(userFirstName);
+        final Customer tempCustomer = repository.getCustomerFromDatabaseUsingFirstName(userFirstName);
         if (tempCustomer!=null) {
             if (userPassword.equals(tempCustomer.getPassword())) {
                 return tempCustomer;
