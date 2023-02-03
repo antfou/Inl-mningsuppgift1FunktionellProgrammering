@@ -23,11 +23,11 @@ public class Console {
         clientMethods = new ClientMethods();
         rapportMethods = new RapportMethods();
 
+        //rapportMethods.rapport1();
 
-        rapportMethods.rapport1();
 
 
-/*
+
         activeUser = ActiveUser.LOGGED_OUT;
         chosenProduct = ChosenProduct.NOT_IN_STOCK;
 
@@ -36,11 +36,8 @@ public class Console {
         }
         Shoe shoe = chooseProduct();
 
-        repository.callAddToCart(user.getId(), 999,shoe.getId());
+        repository.callAddToCart(user.getId(), clientMethods.chooseOrderToAddShoe(clientMethods.newOrderPrompt(), user.getId()), shoe.getId());
         System.out.println("Added to cart: Sko nr:"+shoe.getId()+" Märke "+shoe.getBrand().getBrandName() +" -Färg: "+shoe.getColor().getColorName()+" -Storlek: "+shoe.getSize());
-*/
-
-
     }
 
 

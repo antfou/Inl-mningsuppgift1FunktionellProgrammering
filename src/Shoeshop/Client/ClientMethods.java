@@ -2,10 +2,12 @@ package Shoeshop.Client;
 
 import Shoeshop.Objects.Brand;
 import Shoeshop.Objects.Customer;
+import Shoeshop.Objects.Order;
 import Shoeshop.Objects.Shoe;
 import Shoeshop.Server.Repository;
 
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class ClientMethods {
@@ -52,4 +54,26 @@ public class ClientMethods {
     public boolean checkIfInStock(List<Shoe> shoeList, int id){
         return shoeList.stream().filter(shoe -> shoe.getAmountInStock()>0).toList().stream().anyMatch(s->s.getId()==id);
     }
-}
+
+
+    public int chooseOrderToAddShoe(boolean newOrder,int customerId){
+        if(newOrder){
+            return 999;
+        } else {
+            return repository.getOrderListFromDatabaseUsingCustomerId(customerId).stream().mapToInt(Order::getId).distinct().max().getAsInt();
+        }
+    }
+
+    public boolean newOrderPrompt(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Är det här en ny beställning?");
+        System.out.println("(1) - Ja, gör en ny beställning");
+        System.out.println("(2) - Nej, lägg till produkten i min senaste beställning");
+        final int tempInt = Integer.parseInt(sc.nextLine());
+        if(tempInt==1){
+            return true;
+        }else
+            return false;
+        }
+    }
+
