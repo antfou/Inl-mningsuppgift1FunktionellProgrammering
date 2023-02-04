@@ -14,7 +14,7 @@ public class Repository {
 
     public Repository(){
         try{
-            properties.load(new FileInputStream("src/Shoeshop/Server/Setttings.Properties"));
+            properties.load(new FileInputStream("src/Shoeshop/Database/Setttings.Properties"));
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException(e);

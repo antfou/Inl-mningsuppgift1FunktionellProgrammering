@@ -2,6 +2,8 @@ package Shoeshop.Console;
 
 import Shoeshop.Enums.ActiveUser;
 import Shoeshop.Enums.ChosenProduct;
+import Shoeshop.Enums.RapportMode;
+import Shoeshop.Enums.SupportMode;
 import Shoeshop.Objects.Customer;
 import Shoeshop.Objects.Shoe;
 import Shoeshop.Rapports.Rapports;
@@ -15,30 +17,73 @@ public class Console {
     protected final Rapports rapports;
 
     protected Customer user;
-    ActiveUser activeUser;
-    ChosenProduct chosenProduct;
+    protected ActiveUser activeUser;
+    protected ChosenProduct chosenProduct;
+    protected SupportMode supportMode;
+    RapportMode rapportMode;
 
     public Console() throws InterruptedException {
         repository = new Repository();
         methods = new Methods();
         rapports = new Rapports();
 
-
-        //rapports.rapport1();
-
-
-
-
         activeUser = ActiveUser.LOGGED_OUT;
         chosenProduct = ChosenProduct.NOT_IN_STOCK;
+
+
+        bootup();
+
 
         while(activeUser == ActiveUser.LOGGED_OUT) {
             user = login();
         }
+
+
         Shoe shoe = chooseProduct();
+
 
         repository.callAddToCart(user.getId(), methods.chooseOrderToAddShoe(methods.newOrderPrompt(), user.getId()), shoe.getId());
         System.out.println("Added to cart: Sko nr:"+shoe.getId()+" Märke "+shoe.getBrand().getBrandName() +" -Färg: "+shoe.getColor().getColorName()+" -Storlek: "+shoe.getSize());
+
+
+    }
+
+    public void bootup(){
+        final Scanner sc = new Scanner(System.in);
+        supportMode = SupportMode.SUPPORT_MODE_ON;
+        while (supportMode == supportMode.SUPPORT_MODE_ON){
+            System.out.println("Välkommen: ");
+            System.out.println("Vad vill du göra?");
+            System.out.println("(1) - kolla på rapporter");
+            System.out.println("(2) - göra en beställning");
+            int tempInt = Integer.parseInt(sc.nextLine());
+            switch (tempInt){
+                case 1 -> Rapport();
+                case 2 -> supportMode = SupportMode.SUPPORT_MODE_OFF;
+            }
+        }
+
+    }
+
+
+
+    public void Rapport(){
+        final Scanner sc = new Scanner(System.in);
+        rapportMode  = RapportMode.RAPPORT_MODE_ON;
+        while (rapportMode == RapportMode.RAPPORT_MODE_ON){
+            System.out.println("Vilken rapport vill du se?");
+            System.out.println("(1) - Kunder som handlat en viss vara.");
+            System.out.println("(2) - Alla kunder med antal ordrar");
+            System.out.println("(3) - Alla kunder med summa spenderat");
+            System.out.println("(4) - Main meny");
+            int tempInt = Integer.parseInt(sc.nextLine());
+            switch (tempInt){
+                case 1 -> rapports.rapport1();
+                case 2 -> rapports.rapport2();
+                case 3 -> rapports.rapport3();
+                case 4 -> rapportMode = RapportMode.RAPPORT_MODE_OFF;
+            }
+        }
     }
 
 

@@ -40,10 +40,10 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer{" +
+        return "Customer||" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", address=" + address.addressName +
-                '}';
+                "||";
     }
 }

@@ -20,9 +20,18 @@ public class Rapports {
         final String tempString = sc.nextLine();
 
         switch (tempInt){
-            case 1 -> rapportMethods.rCustomerNames(rapportMethods.rFilterShoesInOrder(repository.getOrderListFromDatabase(),tempString,rapportMethods.sizeSearch));
-            case 2 -> rapportMethods.rCustomerNames(rapportMethods.rFilterShoesInOrder(repository.getOrderListFromDatabase(),tempString,rapportMethods.brandSearch));
-            case 3 -> rapportMethods.rCustomerNames(rapportMethods.rFilterShoesInOrder(repository.getOrderListFromDatabase(),tempString,rapportMethods.colorSearch));
+            case 1 -> rapportMethods.rPrintAllCustomersWhoOrderedShoe(rapportMethods.rFilterShoesInOrder(repository.getOrderListFromDatabase(),tempString,rapportMethods.sizeSearch));
+            case 2 -> rapportMethods.rPrintAllCustomersWhoOrderedShoe(rapportMethods.rFilterShoesInOrder(repository.getOrderListFromDatabase(),tempString,rapportMethods.brandSearch));
+            case 3 -> rapportMethods.rPrintAllCustomersWhoOrderedShoe(rapportMethods.rFilterShoesInOrder(repository.getOrderListFromDatabase(),tempString,rapportMethods.colorSearch));
         }
+    }
+
+    public void rapport2(){
+        rapportMethods.rPrintCustomerAndAmountOfOrders(repository.getCustomerListFromDatabase());
+    }
+
+    public void rapport3(){
+        rapportMethods.rPrintCustomersAndAmoutSpent(repository.getCustomerListFromDatabase());
+
     }
 }
