@@ -9,7 +9,7 @@ public class Rapports {
     protected final RapportMethods rapportMethods = new RapportMethods();
     protected final Repository repository = new Repository();
 
-    public void rapport1(){
+    public void rapport1() {
         final Scanner sc = new Scanner(System.in);
         System.out.println("Vilken kategori vill du söka upp?");
         System.out.println("(1) - Storlek");
@@ -19,19 +19,40 @@ public class Rapports {
         System.out.println("Sök: ");
         final String tempString = sc.nextLine();
 
-        switch (tempInt){
-            case 1 -> rapportMethods.rPrintAllCustomersWhoOrderedShoe(rapportMethods.rFilterShoesInOrder(repository.getOrderListFromDatabase(),tempString,rapportMethods.sizeSearch));
-            case 2 -> rapportMethods.rPrintAllCustomersWhoOrderedShoe(rapportMethods.rFilterShoesInOrder(repository.getOrderListFromDatabase(),tempString,rapportMethods.brandSearch));
-            case 3 -> rapportMethods.rPrintAllCustomersWhoOrderedShoe(rapportMethods.rFilterShoesInOrder(repository.getOrderListFromDatabase(),tempString,rapportMethods.colorSearch));
+        switch (tempInt) {
+            case 1 -> rapportMethods
+                    .rPrintAllCustomersWhoOrderedShoe(rapportMethods
+                            .rFilterShoesInOrder(repository
+                                            .getOrderListFromDatabase(),
+                                    tempString,
+                                    rapportMethods
+                                            .sizeSearch));
+            case 2 -> rapportMethods
+                    .rPrintAllCustomersWhoOrderedShoe(rapportMethods
+                            .rFilterShoesInOrder(repository
+                                            .getOrderListFromDatabase(),
+                                    tempString,
+                                    rapportMethods
+                                            .brandSearch));
+            case 3 -> rapportMethods
+                    .rPrintAllCustomersWhoOrderedShoe(rapportMethods
+                            .rFilterShoesInOrder(repository
+                                            .getOrderListFromDatabase(),
+                                    tempString,
+                                    rapportMethods
+                                            .colorSearch));
         }
     }
 
-    public void rapport2(){
-        rapportMethods.rPrintCustomerAndAmountOfOrders(repository.getCustomerListFromDatabase());
+    public void rapport2() {
+        rapportMethods
+                .rPrintCustomerAndAmountOfOrders(repository
+                        .getCustomerListFromDatabase());
     }
 
-    public void rapport3(){
-        rapportMethods.rPrintCustomersAndAmoutSpent(repository.getCustomerListFromDatabase());
-
+    public void rapport3() {
+        rapportMethods
+                .rPrintCustomersAndAmoutSpent(repository
+                        .getCustomerListFromDatabase());
     }
 }

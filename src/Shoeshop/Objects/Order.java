@@ -10,7 +10,10 @@ public class Order {
     protected final Customer customer;
     protected final List<Shoe> orderedShoes;
 
-    public Order(int id, Date orderDate, Customer customer, List<Shoe> orderedShoes) {
+    public Order(final int id,
+                 final Date orderDate,
+                 final Customer customer,
+                 final List<Shoe> orderedShoes) {
         this.id = id;
         this.orderDate = orderDate;
         this.customer = customer;

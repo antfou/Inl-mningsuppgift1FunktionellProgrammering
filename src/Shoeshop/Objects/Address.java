@@ -4,7 +4,8 @@ public class Address {
     protected final String addressName;
     protected final String cityName;
 
-    public Address(String addressName, String cityName) {
+    public Address(final String addressName,
+                   final String cityName) {
         this.addressName = addressName;
         this.cityName = cityName;
     }

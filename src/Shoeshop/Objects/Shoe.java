@@ -11,7 +11,13 @@ public class Shoe {
     protected final int amountInStock;
     protected final List<Category> categories;
 
-    public Shoe(int id, Brand brand, int size, Color color, int price, int amountInStock,List<Category> categories) {
+    public Shoe(final int id,
+                final Brand brand,
+                final int size,
+                final Color color,
+                final int price,
+                final int amountInStock,
+                final List<Category> categories) {
         this.id = id;
         this.brand = brand;
         this.size = size;

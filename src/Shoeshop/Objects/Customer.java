@@ -10,7 +10,11 @@ public class Customer {
     protected final String password;
     protected final Address address;
 
-    public Customer(int id, String firstName, String lastName, String password, Address address) {
+    public Customer(final int id,
+                    final String firstName,
+                    final String lastName,
+                    final String password,
+                    final Address address) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
