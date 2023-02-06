@@ -59,13 +59,13 @@ public class RapportMethods {
                 .map(s -> s + " " +
                         getCustomerLasNameUsingFirstName(s) +
                         " || Antal Ordrar: " +
-                        rGetAmoutOfDistinctOrders(
+                        rGetAmountOfDistinctOrders(
                                 repository.getOrderListFromDatabaseUsingCustomerId(
                                         repository.getCustomerFromDatabaseUsingFirstName(s)
                                                 .getId()))).forEach(System.out::println);
     }
 
-    public void rPrintCustomersAndAmoutSpent(final List<Customer> list) {
+    public void rPrintCustomersAndAmountSpent(final List<Customer> list) {
         list.stream()
                 .map(Customer::getFirstName)
                 .distinct()
@@ -81,7 +81,7 @@ public class RapportMethods {
 
     }
 
-    public int rGetAmoutOfDistinctOrders(final List<Order> list) {
+    public int rGetAmountOfDistinctOrders(final List<Order> list) {
         return (int) list.stream()
                 .map(s ->
                         s.getId())

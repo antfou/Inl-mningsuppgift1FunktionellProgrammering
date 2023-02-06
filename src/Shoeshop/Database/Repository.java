@@ -16,7 +16,7 @@ public class Repository {
     public Repository() {
         try {
             properties.load(new FileInputStream
-                    ("src/Shoeshop/Database/Setttings.Properties"));
+                    ("C:\\Users\\hexpo\\OneDrive\\Skrivbord\\JavaUtveckling1\\Inl-mningsuppgift1FunktionellProgrammering\\src\\Shoeshop\\Database\\Settings.Properties"));
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException(e);

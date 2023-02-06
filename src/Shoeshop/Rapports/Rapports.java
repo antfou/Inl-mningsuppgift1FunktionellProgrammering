@@ -52,7 +52,7 @@ public class Rapports {
 
     public void rapport3() {
         rapportMethods
-                .rPrintCustomersAndAmoutSpent(repository
+                .rPrintCustomersAndAmountSpent(repository
                         .getCustomerListFromDatabase());
     }
 }
